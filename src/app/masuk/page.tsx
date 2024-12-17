@@ -15,10 +15,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { signIn } from "next-auth/react";
+import ButtonGoogle from "@/components/ButtonGoogle";
 
 export default function Masuk() {
   const [email, setEmail] = useState("");
@@ -119,14 +118,14 @@ export default function Masuk() {
                 </Button>
               </CardFooter>
             </form>
+              {/* Tombol Masuk dengan Google */}
+            <ButtonGoogle />
           </CardContent>
 
-          {/* Tombol Masuk dengan Google */}
-          <CardFooter className="flex flex-col space-y-2 mt-2">
-          <Button variant="outline" className="w-full" onClick={() => signIn("google")}>
-              <FontAwesomeIcon icon={faGoogle} />
-              Masuk dengan Google
-            </Button>
+          <CardFooter className="flex flex-col space-y-1 mt-2">
+            
+        
+          
           </CardFooter>
           
         </Card>
