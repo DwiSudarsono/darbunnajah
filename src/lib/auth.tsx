@@ -1,6 +1,23 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    };
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+  }
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
@@ -10,25 +27,22 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return true
-    },
+    // Mengarahkan pengguna ke halaman profil setelah login
     async redirect({ url, baseUrl }) {
-      return `${baseUrl}/auth/signin`
+        // Pengalihan ke halaman profil
+            return `${baseUrl}/profile`;
+        
     },
-    async session({ session, user, token }) {
-
-      return session
+    // Menambahkan data pengguna ke sesi
+    async session({ session, token }) {
+      return session;
     },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      return token
-    }
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
   },
-  pages :{
-    signOut : "/masuk"
-  },
- 
-  secret: process.env.NEXTAUTH_SECRET,
 };
-
 export default NextAuth(authOptions);

@@ -4,10 +4,14 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 @layer base {
   :root {
     --radius: 0.5rem;
   }
+}
+.glass-navbar {
+  @apply bg-white bg-opacity-20 backdrop-blur-lg border border-white border-opacity-30;
 }

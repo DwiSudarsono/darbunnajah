@@ -16,17 +16,11 @@ const Footer: React.FC = () => {
         <p className="text-sm">
           {currentYear} Darbunnajah. All rights reserved.
         </p>
-        <div className="mt-2">
-          <Link href="/" className="mx-2 hover:text-gray-400">
-            Home
+        <p className="text-sm">
+          <Link href={"/about"}>
+          Made with ❤️ by{" D'one"}
           </Link>
-          <Link href="/about" className="mx-2 hover:text-gray-400">
-            About
-          </Link>
-          <Link href="/contact" className="mx-2 hover:text-gray-400">
-            Contact
-          </Link>
-        </div>
+        </p>
       </div>
     </footer>
   );

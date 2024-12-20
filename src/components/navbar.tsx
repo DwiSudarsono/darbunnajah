@@ -4,6 +4,7 @@ import Link from "next/link"; // Ganti navigasi internal dengan Link
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { Button } from "./ui/button";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,10 @@ function Navbar() {
   };
 
   return (
-    <div className="flex flex-col bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-white">
+    <>
+    <div className="bg-gray-50 dark:bg-gray-900"> 
+    <div className=" text-gray-800 font-sans dark:bg-gray-900 dark:text-white">
+    </div>
       {/* Header */}
       <div className="flex justify-between items-center p-5">
         <div className="flex items-center">
@@ -34,25 +38,21 @@ function Navbar() {
         </div>
 
         {/* Navbar untuk screen besar */}
-        <nav className="hidden md:flex md:space-x-4 text-center md:font-extrabold md:text-xl font-bold text-md dark:text-white text-black">
+        <nav className="hidden md:flex md:space-x-4 text-center md:font-extrabold md:text-xl font-bold text-md dark:text-white text-black bg-dark">
           <li className="list-none">
-            <Link href="/masuk">
-              Masuk
-            </Link>
-          </li>
-          <li className="list-none">
-            <Link href="/daftar">
-              Daftar
-            </Link>
+           
           </li>
           <li className="list-none">
             <Link href="/komunitas">
               Komunitas
             </Link>
           </li>
+          <Link href="/masuk">
+              <Button className="bg-green-600 hover:bg-green-700">Masuk</Button>
+            </Link>
         </nav>
 
-        {/* Navbar untuk screen kecil */}
+        {/* Navbar untuk scree  n kecil */}
         <div className="md:hidden">
           <FontAwesomeIcon
             icon={isOpen ? faTimes : faBars}
@@ -73,17 +73,16 @@ function Navbar() {
           className="absolute top-5 right-5 cursor-pointer text-2xl"
           onClick={toggleNavbar} // Menambahkan fungsi close untuk navbar
         />
-        <Link href="/masuk" className="font-bold mt-10">
-          Masuk
-        </Link>
-        <Link href="/daftar" className="font-bold mt-4">
-          Daftar
-        </Link>
         <Link href="/komunitas" className="font-bold mt-4">
           Komunitas
         </Link>
+        <Link href="/masuk">
+              <Button>Masuk</Button>
+            </Link>
       </div>
-    </div>
+      </div>
+
+    </>
   );
 }
 

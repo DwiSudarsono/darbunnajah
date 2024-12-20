@@ -58,7 +58,7 @@ export default function Masuk() {
 
   return (
     <>
-      <Navbar />
+
       <div className="flex items-center justify-center min-h-screen bg-gray-50 bg-gradient-to-r from-green-500">
         <Card className="w-[480px] shadow-lg rounded-lg">
           <CardHeader>
